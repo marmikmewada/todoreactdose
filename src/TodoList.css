@@ -88,3 +88,11 @@
     border: none;
 
 }
+
+.listarea>button{
+    height: 4em;
+    width: 8em;
+    color: white;
+    border: none;
+    background: #000;
+}
