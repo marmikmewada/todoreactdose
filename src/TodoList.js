@@ -17,13 +17,7 @@ const TodoList = () => {
     });
   };
 
-  const removeActivity = (index) => {
-    const updatedlistdata = list.filter((val,id)=>{
-        return index!==id;
-    })
-    console.log(updatedlistdata);
-    // setlist(updatedlistdata);
-  }
+  
   return (
     <>
       <div className="container">
@@ -47,11 +41,22 @@ const TodoList = () => {
                 return(
                     <>
                     <div className="listvalue" key={index}>
-                        <p key={index}>{value}</p><button onClick={removeActivity(index)}>Delete</button>
+                        <p key={index}>{value}</p>
+                        <button onClick={(index)=>{
+                            const updatedlistdata = list.filter((val,id)=>{
+                                if(index!==id){
+                                    return id
+                                }
+                            })
+                            setlist(updatedlistdata);
+                        }}>Delete</button>
                     </div>
                     </>
                 )
             })}
+            {list.length !==0 && <button onClick={()=> {
+                setlist([]);
+            }}>remove All</button> }
         </div>
       </div>
     </>
